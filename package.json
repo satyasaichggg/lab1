@@ -1,0 +1,19 @@
+{
+    "name": "lab1",
+    "lockfileVersion": 3,
+    "requires": true,
+    "packages": {},
+    "version": "1.0.0",
+    "description": "pushing and commiting",
+    "main": "express.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.21.2"
+    }
+}
