@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <script>
+     async function sendOTP() {
+    const email = document.getElementById("email").value;
+    if (!email) {
+        alert("Please enter an email ID.");
+        return;
+    }
+
+    const response = await fetch("https://opulent-chainsaw-x5prrg77r64p265qr-3000.app.github.dev/send-otp", {  
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+    });
+
+    const result = await response.json();
+    alert(result.message);
+}
+
+    </script>
+</head>
+<body>
+    <h2>Enter your Email ID</h2>
+    <input type="email" id="email" placeholder="Enter email" required>
+    <button onclick="sendOTP()">Submit</button>
+</body>
+</html>
