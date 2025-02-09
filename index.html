@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,5 +28,45 @@
     <h2>Enter your Email ID</h2>
     <input type="email" id="email" placeholder="Enter email" required>
     <button onclick="sendOTP()">Submit</button>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Verification</title>
+</head>
+<body>
+    <h2>Enter an Address to Verify</h2>
+    <input type="text" id="addressInput" placeholder="Enter full address">
+    <button onclick="verifyAddress()">Verify</button>
+    <p id="result"></p>
+
+    <script>
+        async function verifyAddress() {
+            let address = document.getElementById("addressInput").value.trim();
+            
+            if (!address) {
+                document.getElementById("result").innerText = "⚠️ Please enter an address.";
+                return;
+            }
+
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    document.getElementById("result").innerText = "✅ Valid Address";
+                } else {
+                    document.getElementById("result").innerText = "❌ Invalid Address!";
+                }
+            } catch (error) {
+                document.getElementById("result").innerText = "⚠️ Error: " + error.message;
+            }
+        }
+    </script>
 </body>
 </html>
